@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply antialiased;
+  }
+  
+  body {
+    @apply bg-gradient-subtle text-neutral-800 min-h-screen font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-neutral-900 tracking-tight;
+  }
+  
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+@layer components {
+    /* Layout */
+    .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .page-header {
+        @apply mb-8 flex items-end justify-between flex-wrap gap-4;
+    }
+
+    .page-title {
+        @apply text-2xl font-bold text-neutral-900 sm:text-3xl tracking-tight;
+    }
+
+    .page-description {
+        @apply mt-2 text-sm text-neutral-600;
+    }
+    
+    /* Cards - Usados en todas las vistas incluyendo profile */
+    .card {
+        @apply bg-white rounded-modern shadow-card border border-neutral-100/50 hover:shadow-hover transition-all duration-300;
+    }
+    
+    .card-header {
+        @apply px-6 py-4 border-b border-neutral-100/50 flex justify-between items-center bg-white/50 rounded-t-modern;
+    }
+    
+    .card-title {
+        @apply text-lg font-semibold text-neutral-900;
+    }
+    
+    .card-body {
+        @apply p-6;
+    }
+
+    .card-footer {
+        @apply px-6 py-4 bg-neutral-50/50 border-t border-neutral-100/50 rounded-b-modern;
+    }
+    
+    /* Section headers - Para todos los encabezados de sección incluyendo perfil */
+    .section-header {
+        @apply mb-6 pb-4 border-b border-neutral-100;
+    }
+    
+    .section-title {
+        @apply flex items-center text-lg font-medium text-neutral-900;
+    }
+    
+    .section-description {
+        @apply mt-1.5 text-sm text-neutral-600;
+    }
+    
+    .section-icon {
+        @apply text-xl text-primary-500 mr-2;
+    }
+    
+    /* Form utilities - Usados en todas las formas incluyendo perfil */
+    .form-label {
+        @apply block text-sm font-medium text-neutral-700 mb-1;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+        @apply mt-1 block w-full rounded-lg border-neutral-200 shadow-inner focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 sm:text-sm transition-all duration-200;
+    }
+    
+    .form-textarea {
+        @apply resize-none;
+    }
+    
+    .is-invalid {
+        @apply border-danger-400 focus:border-danger-400 focus:ring-danger-200;
+    }
+
+    .form-group {
+        @apply mb-4;
+    }
+
+    .form-hint {
+        @apply mt-1 text-sm text-neutral-500;
+    }
+    
+    .form-actions {
+        @apply flex items-center justify-end gap-4 pt-5 mt-6 border-t border-neutral-100;
+    }
+    
+    .input-icon-wrapper {
+        @apply relative mt-1;
+    }
+    
+    .input-icon {
+        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-neutral-400;
+    }
+    
+    .input-with-icon {
+        @apply pl-10;
+    }
+    
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-xl text-sm font-medium shadow-button transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+    
+    .btn-primary {
+        @apply btn bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 focus:ring-primary-500;
+    }
+    
+    .btn-secondary {
+        @apply btn bg-gradient-to-r from-secondary-600 to-secondary-700 text-white hover:from-secondary-700 hover:to-secondary-800 focus:ring-secondary-500;
+    }
+    
+    .btn-success {
+        @apply btn bg-gradient-to-r from-success-500 to-success-600 text-white hover:from-success-600 hover:to-success-700 focus:ring-success-400;
+    }
+    
+    .btn-danger {
+        @apply btn bg-gradient-to-r from-danger-500 to-danger-600 text-white hover:from-danger-600 hover:to-danger-700 focus:ring-danger-400;
+    }
+    
+    .btn-warning {
+        @apply btn bg-gradient-to-r from-warning-500 to-warning-600 text-white hover:from-warning-600 hover:to-warning-700 focus:ring-warning-400;
+    }
+    
+    .btn-outline {
+        @apply btn border-2 bg-transparent hover:bg-neutral-50;
+    }
+    
+    .btn-sm {
+        @apply px-3 py-1.5 text-xs rounded-md;
+    }
+    
+    .btn-lg {
+        @apply px-6 py-3 text-base;
+    }
+    
+    .btn-icon {
+        @apply p-2 rounded-full;
+    }
+    
+    /* Badges */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    
+    .badge-success {
+        @apply bg-success-100 text-success-800;
+    }
+    
+    .badge-danger {
+        @apply bg-danger-100 text-danger-800;
+    }
+    
+    .badge-warning {
+        @apply bg-warning-100 text-warning-800;
+    }
+    
+    .badge-info {
+        @apply bg-primary-100 text-primary-800;
+    }
+    
+    /* Status indicators */
+    .status-completed, .status-realizada {
+        @apply bg-success-100 text-success-700 px-2.5 py-1 rounded-full text-xs font-medium;
+    }
+    
+    .status-pending, .status-pendiente {
+        @apply bg-warning-100 text-warning-700 px-2.5 py-1 rounded-full text-xs font-medium;
+    }
+    
+    .status-in_progress, .status-en_seguimiento {
+        @apply bg-primary-100 text-primary-700 px-2.5 py-1 rounded-full text-xs font-medium;
+    }
+    
+    /* Tables */
+    .table-container {
+        @apply overflow-x-auto rounded-modern shadow-card border border-neutral-100;
+    }
+    
+    .table {
+        @apply min-w-full divide-y divide-neutral-200;
+    }
+    
+    .table th {
+        @apply px-6 py-3 bg-neutral-50 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider;
+    }
+    
+    .table td {
+        @apply px-6 py-4 whitespace-nowrap text-sm text-neutral-900;
+    }
+    
+    .table tr {
+        @apply hover:bg-neutral-50/50 transition-colors duration-150;
+    }
+    
+    .table tr:not(:last-child) {
+        @apply border-b border-neutral-100;
+    }
+    
+    /* Calendar */
+    .calendar-container {
+        @apply bg-white rounded-modern shadow-card border border-neutral-100 p-4;
+    }
+    
+    .calendar-header {
+        @apply flex items-center justify-between mb-4;
+    }
+    
+    .calendar-grid {
+        @apply grid grid-cols-7 gap-1;
+    }
+    
+    .calendar-day {
+        @apply aspect-square p-2 rounded-lg hover:bg-neutral-50 transition-colors duration-150 cursor-pointer relative;
+    }
+    
+    .calendar-day.today {
+        @apply bg-primary-50 text-primary-700 font-medium;
+    }
+    
+    .calendar-day.has-events {
+        @apply bg-secondary-50;
+    }
+    
+    .calendar-day.has-events::after {
+        @apply content-[''] absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-secondary-500;
+    }
+    
+    /* Responsive utilities */
+    .responsive-container {
+        @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+    
+    .responsive-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+    }
+    
+    .responsive-text {
+        @apply text-sm sm:text-base;
+    }
+    
+    .responsive-heading {
+        @apply text-xl sm:text-2xl lg:text-3xl;
+    }
+
+    /* Auth page styling */
+    .auth-container {
+        @apply min-h-screen flex flex-col sm:justify-center items-center py-10 sm:py-0 px-4 sm:px-6;
+    }
+    
+    .auth-card {
+        @apply bg-white shadow-xl rounded-xl border border-neutral-200/60 overflow-hidden backdrop-blur-sm backdrop-filter w-full sm:max-w-md;
+    }
+    
+    .auth-card-body {
+        @apply p-6 sm:p-8;
+    }
+    
+    .auth-card-header {
+        @apply text-2xl font-bold text-center text-neutral-900 mb-6;
+    }
+}
+
+/* Estilos para el calendario */
+.fc .fc-button-primary {
+    @apply bg-primary-600 border-primary-700 shadow-sm focus:ring-4 focus:ring-primary-200 !important;
+}
+
+.fc .fc-button-primary:hover {
+    @apply bg-primary-700 border-primary-800 !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, 
+.fc .fc-button-primary:not(:disabled):active {
+    @apply bg-primary-800 border-primary-900 shadow-inner !important;
+}
+
+.fc-theme-standard th {
+    @apply bg-neutral-50 text-neutral-600 text-xs !important;
+}
+
+.fc .fc-toolbar-title {
+    @apply text-lg sm:text-xl font-bold text-neutral-800 !important;
+}
+
+.fc-day-today {
+    @apply bg-primary-50/50 !important;
+}
+
+.fc-event {
+    @apply border-none rounded-md shadow-sm cursor-pointer !important;
+}
+
+.fc-event:hover {
+    @apply opacity-90 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn {
+        @apply w-full justify-center;
+    }
+    
+    .page-header {
+        @apply flex flex-col items-start;
+    }
+    
+    .table th,
+    .table td {
+        @apply px-4 py-3;
+    }
+}
+
+/* Responsive design enhancements */
+@media (max-width: 640px) {
+    .auth-card {
+        @apply shadow-md;
+    }
+}
+
+/* Animaciones */
+@keyframes slide-up {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scale {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
