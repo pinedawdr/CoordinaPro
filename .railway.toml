@@ -20,4 +20,7 @@ DB_HOST=tu_host_de_railway
 DB_PORT=3306
 DB_DATABASE=railway
 DB_USERNAME=root
-DB_PASSWORD=tu_password_de_railway 
+DB_PASSWORD=tu_password_de_railway
+
+[phases.setup]
+nixPkgs = ["php", "composer", "nodejs", "npm"] 
